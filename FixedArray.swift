@@ -5,22 +5,11 @@
 //
 //  Created by Ben on 26/05/2016.
 
-import Foundation
-
 struct JTFixedArray<T: Comparable> {
-	private var length: Int {
-		get {
-			return length
-		}
-	}
-	
+	private(set) var length: Int = 0
 	private let defaultValue: T!
 	private var array: [T]
-	private var count: Int {
-		get {
-			return count
-		}
-	}
+	private(set) var count: Int
 	
 	init(length: Int, defaultValue: T) {
 		self.count = 0
@@ -31,21 +20,21 @@ struct JTFixedArray<T: Comparable> {
 	
 	subscript(index: Int) -> T {
 		get {
-			assert(index < maxSize)
+			assert(index < length)
 			assert(index >= 0)
 			return array[index]
 		}
 		
 		set(newValue) {
 			assert(index >= 0)
-			assert(count < maxSize)
+			assert(count < length)
 			count += 1
 			array[index] = newValue
 		}
 	}
 	
 	mutating func append(newElement: T) {
-		assert(count < maxSize)
+		assert(count < length)
 		count += 1
 		array[count] = newElement
 	}
