@@ -8,15 +8,25 @@
 import Foundation
 
 struct JTFixedArray<T: Comparable> {
-	private let maxSize: Int
+	private var length: Int {
+		get {
+			return length
+		}
+	}
+	
 	private let defaultValue: T!
 	private var array: [T]
-	private (set) var count = 0
+	private var count: Int {
+		get {
+			return count
+		}
+	}
 	
-	init(maxSize: Int, defaultValue: T) {
-		self.maxSize = maxSize
+	init(length: Int, defaultValue: T) {
+		self.count = 0
+		self.length = length
 		self.defaultValue = defaultValue
-		self.array = [T](count: maxSize, repeatedValue: defaultValue)
+		self.array = [T](count: length, repeatedValue: defaultValue)
 	}
 	
 	subscript(index: Int) -> T {
@@ -62,9 +72,5 @@ struct JTFixedArray<T: Comparable> {
 		assert(count >= 0)
 		count -= 1
 		array[count] = defaultValue
-	}
-	
-	func count() -> Int {
-		return count
 	}
 }
