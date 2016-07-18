@@ -51,7 +51,7 @@ extension UIView {
 	}
     
     // rounding the corners of the view's layer.
-    func roundCorners(radius: CGFloat = CGFloat(10)) {
+    func roundCorners(radius: CGFloat = 10) {
         layer.cornerRadius = radius
     }
 	
